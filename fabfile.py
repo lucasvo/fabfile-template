@@ -157,6 +157,7 @@ def db_create():
             """ % env)
             
     run("""
+            cd %(version_path)s 
             %(virtualenv)s/bin/python manage.py syncdb --noinput --settings=settings_%(env)s
             %(virtualenv)s/bin/python manage.py migrate --settings=settings_%(env)s
     """ % env)
