@@ -311,9 +311,6 @@ def server_start():
         run("""ln -sfn %(version_path)s/%(wsgi_script)s %(version_path)s/live.wsgi""" % env)
     
     if env.pidfile and env.runserver_port:
-        if env.env == 'dev': #small fix for dev deployment
-            with cd('%(app_path)s'%env):
-                run('pwd && git reset HEAD --hard') 
         run("""
         cd %(app_path)s
         pkill -P "`cat %(pidfile)s`"
